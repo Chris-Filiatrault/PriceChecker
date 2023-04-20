@@ -1,12 +1,16 @@
 ﻿using HtmlAgilityPack;
+
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using PriceCheckerAPI.Services;
 
-[assembly: FunctionsStartup(typeof(PriceCheckerAPI.Startup))]
+using PriceChecker.Data;
+using PriceChecker.API.Services;
 
-namespace PriceCheckerAPI
+[assembly: FunctionsStartup(typeof(PriceChecker.API.Startup))]
+
+namespace PriceChecker.API
 {
     public class Startup : FunctionsStartup
     {
@@ -22,6 +26,13 @@ namespace PriceCheckerAPI
 
                 var config = serviceProvider.GetService<IConfiguration>();
                 return new PriceService(client, emailService);
+            });
+
+            builder.Services.AddDbContext<PriceCheckerContext>((serviceProvider, dataContextOptions) =>
+            {
+                var config = serviceProvider.GetRequiredService<IConfiguration>();
+                var dbConnectionString = config.GetValue<string>("SqlConnectionString");
+                dataContextOptions.UseSqlServer(dbConnectionString);
             });
         }
     }
