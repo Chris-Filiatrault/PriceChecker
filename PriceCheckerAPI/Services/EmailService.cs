@@ -2,7 +2,7 @@
 using System.Net;
 using Microsoft.Extensions.Configuration;
 
-namespace PriceCheckerAPI.Services
+namespace PriceChecker.API.Services
 {
     internal class EmailService : IEmailService
     {

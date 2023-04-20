@@ -4,9 +4,9 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using PriceCheckerAPI.Services;
+using PriceChecker.API.Services;
 
-namespace PriceCheckerAPI.Functions
+namespace PriceChecker.API.Functions
 {
     public class CheckPriceHttpFunction
     {

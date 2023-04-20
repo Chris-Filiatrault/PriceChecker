@@ -1,7 +1,7 @@
 ﻿using HtmlAgilityPack;
 using Microsoft.Extensions.Logging;
 
-namespace PriceCheckerAPI.Services
+namespace PriceChecker.API.Services
 {
     internal class PriceService : IPriceService
     {

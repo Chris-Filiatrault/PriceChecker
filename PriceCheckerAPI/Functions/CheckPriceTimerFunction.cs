@@ -1,9 +1,9 @@
 using System;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
-using PriceCheckerAPI.Services;
+using PriceChecker.API.Services;
 
-namespace PriceCheckerAPI.Functions
+namespace PriceChecker.API.Functions
 {
     public class CheckPriceTimerFunction
     {
@@ -17,8 +17,6 @@ namespace PriceCheckerAPI.Functions
         [FunctionName("CheckPricesTimerFunction")]
         public void Run([TimerTrigger("0 * 22 * * *")] TimerInfo myTimer, ILogger log)
         {
-            log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
-
             try
             {
                 priceService.CheckPrices(log);
