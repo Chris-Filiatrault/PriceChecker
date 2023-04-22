@@ -6,7 +6,7 @@ using System;
 
 namespace PriceChecker.Business.Services
 {
-    internal class PriceService : IPriceService
+    public class PriceService : IPriceService
     {
         private readonly HtmlWeb client;
         private readonly IEmailService emailService;
@@ -16,7 +16,7 @@ namespace PriceChecker.Business.Services
         internal const string ChocBrownieElementId = "p_lt_ctl10_pageplaceholder_p_lt_ctl00_wBR_P_D1_ctl00_ctl00_ctl00_ctl00_ctl02_lblActualPrice";
 
 
-        internal PriceService(HtmlWeb client, IEmailService emailService, IEntryService entryService)
+        public PriceService(HtmlWeb client, IEmailService emailService, IEntryService entryService)
         {
             this.client = client;
             this.emailService = emailService;
@@ -27,13 +27,10 @@ namespace PriceChecker.Business.Services
         {
             var browniePrice = GetPriceFromElementId(ChocBrownieUrl, ChocBrownieElementId);
 
-            browniePrice = 2;
             if (browniePrice >= 0 && browniePrice < 3)
             {
                 log.LogInformation("Price is {price}. Sending email and creating database entry.", browniePrice);
-                //emailService.SendEmail(browniePrice);
-                var entries = entryService.GetEntries();
-
+                emailService.SendEmail(browniePrice);
                 entryService.AddNewEntry(new Entry
                 {
                     Price = browniePrice,

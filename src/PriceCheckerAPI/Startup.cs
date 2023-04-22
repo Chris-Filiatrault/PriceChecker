@@ -1,17 +1,16 @@
-﻿using HtmlAgilityPack;
-
+﻿using System;
+using HtmlAgilityPack;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-
 using PriceChecker.Data;
 using PriceChecker.Business.Services;
 using PriceChecker.Business.Services.Interfaces;
 using PriceChecker.Data.Repositories;
 using PriceChecker.Data.Repositories.Interfaces;
-using System;
 using PriceChecker.Common;
+
 
 [assembly: FunctionsStartup(typeof(PriceChecker.API.Startup))]
 

@@ -4,6 +4,6 @@ namespace PriceChecker.Business.Services.Interfaces
 {
     public interface IPriceService
     {
-        internal void CheckPrices(ILogger log);
+        public void CheckPrices(ILogger log);
     }
 }
