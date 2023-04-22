@@ -1,10 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PriceChecker.Common.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PriceChecker.Data
 {
@@ -15,6 +10,6 @@ namespace PriceChecker.Data
             
         }
 
-        public DbSet<Entry>? Entries { get; set; }
+        public DbSet<Entry> Entries { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Net.Mail;
 using System.Net;
 using Microsoft.Extensions.Configuration;
+using PriceChecker.API.Services.Interfaces;
 
 namespace PriceChecker.API.Services
 {

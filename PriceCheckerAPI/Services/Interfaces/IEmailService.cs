@@ -1,4 +1,4 @@
-﻿namespace PriceChecker.API.Services
+﻿namespace PriceChecker.API.Services.Interfaces
 {
     public interface IEmailService
     {

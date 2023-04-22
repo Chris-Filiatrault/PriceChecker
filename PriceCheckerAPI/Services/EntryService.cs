@@ -1,0 +1,28 @@
+﻿using PriceChecker.API.Services.Interfaces;
+using PriceChecker.Common.Models;
+using PriceChecker.Data.Repositories.Interfaces;
+using System.Collections.Generic;
+
+namespace PriceChecker.API.Services
+{
+    public class EntryService : IEntryService
+    {
+        private readonly IEntryRepository entryRepository;
+
+        public EntryService(IEntryRepository entryRepository)
+        {
+            this.entryRepository = entryRepository;
+        }
+
+        void IEntryService.AddNewEntry(Entry entry)
+        {
+            entryRepository.AddNewEntry(entry);
+        }
+
+        List<Entry> IEntryService.GetEntries()
+        {
+            var entries = entryRepository.GetEntries();
+            return entries;
+        }
+    }
+}

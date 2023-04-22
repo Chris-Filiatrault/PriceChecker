@@ -1,7 +1,7 @@
 using System;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
-using PriceChecker.API.Services;
+using PriceChecker.API.Services.Interfaces;
 
 namespace PriceChecker.API.Functions
 {
