@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace PriceChecker.API.Services.Interfaces
+namespace PriceChecker.Business.Services.Interfaces
 {
     public interface IPriceService
     {

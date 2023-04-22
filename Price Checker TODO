@@ -1,0 +1,5 @@
+Price Checker TODO:
+
+- Add Business project
+- Bind config values and use in DI in services 
+- Fix error connecting to DB (continue EF tutorial)

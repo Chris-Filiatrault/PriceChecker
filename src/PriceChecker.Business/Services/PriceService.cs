@@ -1,10 +1,10 @@
 ﻿using HtmlAgilityPack;
 using Microsoft.Extensions.Logging;
-using PriceChecker.API.Services.Interfaces;
+using PriceChecker.Business.Services.Interfaces;
 using PriceChecker.Common.Models;
 using System;
 
-namespace PriceChecker.API.Services
+namespace PriceChecker.Business.Services
 {
     internal class PriceService : IPriceService
     {

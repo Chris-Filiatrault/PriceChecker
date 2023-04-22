@@ -1,9 +1,9 @@
-﻿using PriceChecker.API.Services.Interfaces;
+﻿using PriceChecker.Business.Services.Interfaces;
 using PriceChecker.Common.Models;
 using PriceChecker.Data.Repositories.Interfaces;
 using System.Collections.Generic;
 
-namespace PriceChecker.API.Services
+namespace PriceChecker.Business.Services
 {
     public class EntryService : IEntryService
     {

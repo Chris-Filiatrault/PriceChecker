@@ -1,9 +1,9 @@
 ﻿using System.Net.Mail;
 using System.Net;
 using Microsoft.Extensions.Configuration;
-using PriceChecker.API.Services.Interfaces;
+using PriceChecker.Business.Services.Interfaces;
 
-namespace PriceChecker.API.Services
+namespace PriceChecker.Business.Services
 {
     internal class EmailService : IEmailService
     {

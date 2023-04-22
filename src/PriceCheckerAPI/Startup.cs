@@ -6,10 +6,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 using PriceChecker.Data;
-using PriceChecker.API.Services;
-using PriceChecker.API.Services.Interfaces;
+using PriceChecker.Business.Services;
+using PriceChecker.Business.Services.Interfaces;
 using PriceChecker.Data.Repositories;
 using PriceChecker.Data.Repositories.Interfaces;
+using System;
+using PriceChecker.Common;
 
 [assembly: FunctionsStartup(typeof(PriceChecker.API.Startup))]
 
@@ -46,6 +48,14 @@ namespace PriceChecker.API
                 var dbConnectionString = config.GetValue<string>(SqlConnectionString);
                 dataContextOptions.UseSqlServer(dbConnectionString);
             });
+        }
+
+        public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+        {
+            var config = builder.ConfigurationBuilder.Build();
+            Environment.SetEnvironmentVariable(Constants.SmtpApiKey, config.GetValue<string>(Constants.SmtpApiKey));
+            var key = config.GetValue<string>(Constants.SmtpApiKey);
+            base.ConfigureAppConfiguration(builder);
         }
     }
 }

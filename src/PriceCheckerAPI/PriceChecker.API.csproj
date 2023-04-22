@@ -5,10 +5,13 @@
     <UserSecretsId>be4863af-e0ef-4f95-8031-98d7af8f8292</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
     <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.1" />
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.1.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PriceChecker.Business\PriceChecker.Business.csproj" />
+    <ProjectReference Include="..\PriceChecker.Common\PriceChecker.Common.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">
@@ -18,12 +21,5 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Extensions\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PriceChecker.Common\PriceChecker.Common.csproj" />
-    <ProjectReference Include="..\PriceChecker.Data\PriceChecker.Data.csproj" />
   </ItemGroup>
 </Project>
