@@ -1,7 +1,6 @@
 ﻿using PriceChecker.Business.Services.Interfaces;
 using PriceChecker.Common.Models;
 using PriceChecker.Data.Repositories.Interfaces;
-using System.Collections.Generic;
 
 namespace PriceChecker.Business.Services
 {

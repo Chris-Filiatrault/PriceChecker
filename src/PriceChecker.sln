@@ -14,7 +14,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PriceChecker.Data", "PriceC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PriceChecker.Common", "PriceChecker.Common\PriceChecker.Common.csproj", "{205C00A5-867A-47A5-91DF-467E899B8104}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceChecker.Business", "PriceChecker.Business\PriceChecker.Business.csproj", "{90AA578B-7242-4D1D-B1D1-F7EAAB68A06B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PriceChecker.Business", "PriceChecker.Business\PriceChecker.Business.csproj", "{90AA578B-7242-4D1D-B1D1-F7EAAB68A06B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

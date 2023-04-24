@@ -3,6 +3,7 @@
   "Values": {
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
     "FUNCTIONS_WORKER_RUNTIME": "dotnet",
-    "SmtpApiKey": "{From User Secrets}"
+    "Smtp:ApiKey": "{From User Secrets}",
+    "Smtp:ChrisEmailAddress": "{From User Secrets}"
   }
 }
