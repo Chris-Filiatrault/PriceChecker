@@ -25,11 +25,11 @@ namespace PriceChecker.Business.Services
 
         public void CheckPrices(ILogger log)
         {
-            var browniePrice = GetPriceFromElementId(ChocBrownieUrl, ChocBrownieElementId);
+            var browniePrice = GetPriceFromElementId(ChocBrownieUrl, ChocBrownieElementId, log);
 
             if (browniePrice >= 0 && browniePrice < 3)
             {
-                log.LogInformation("Price is {price}. Sending email and creating database entry.", browniePrice);
+                log.LogInformation("Price is less than $3");
                 emailService.SendEmail(browniePrice);
                 entryService.AddNewEntry(new Entry
                 {
@@ -43,14 +43,20 @@ namespace PriceChecker.Business.Services
             log.LogInformation("Price was not less than $3. Did not send email.");
         }
 
-        private decimal GetPriceFromElementId(string url, string elementId)
+        private decimal GetPriceFromElementId(string url, string elementId, ILogger log)
         {
-            HtmlDocument html = client.Load(url);
-            var priceString = html.GetElementbyId(elementId).InnerHtml;
-            priceString = priceString.Replace("$", string.Empty);
-            decimal.TryParse(priceString, out decimal price);
-
-            return price;
+            try
+            {
+                HtmlDocument html = client.Load(url);
+                var priceString = html.GetElementbyId(elementId).InnerHtml.Replace("$", string.Empty);
+                decimal.TryParse(priceString, out decimal price);
+                return price;
+            }
+            catch
+            {
+                log.LogError("Failed to get price from element id {ElementId} at url {URL}", elementId, url);
+                throw;
+            }
         }
     }
 }
