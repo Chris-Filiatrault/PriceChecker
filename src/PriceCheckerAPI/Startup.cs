@@ -48,7 +48,10 @@ namespace PriceChecker.API
             {
                 var config = serviceProvider.GetRequiredService<IConfiguration>();
                 var dbConnectionString = config.GetValue<string>(SqlConnectionString);
-                dataContextOptions.UseSqlServer(dbConnectionString);
+                dataContextOptions.UseSqlServer(dbConnectionString, sqlServerOptions =>
+                {
+                    sqlServerOptions.CommandTimeout(3600);
+                });
             });
 
             // Options

@@ -1,25 +1,34 @@
-﻿using PriceChecker.Common.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using PriceChecker.Common.Models;
 using PriceChecker.Data.Repositories.Interfaces;
+using System.Data;
 
 namespace PriceChecker.Data.Repositories
 {
     public class EntryRepository : IEntryRepository
     {
-        public PriceCheckerContext Context { get; set; }
+        public DbSet<Entry> DataSet { get; }
 
-        public EntryRepository(PriceCheckerContext context)
+        public PriceCheckerContext Context { get; }
+
+        public EntryRepository(PriceCheckerContext context, DbSet<Entry> dataSet)
         {
             Context = context;
+            Context.Database.EnsureCreated();
+            DataSet = Context.Entries;
         }
 
         public void AddNewEntry(Entry entry)
         {
-            Context.AddAsync(entry);
+           
+            
+            DataSet.AddAsync(entry);
+            Context.SaveChangesAsync();
         }
 
         public List<Entry> GetEntries()
         {
-            return Context.Entries.ToList();
+            return DataSet.AsNoTracking().ToList();
         }
     }
 }
