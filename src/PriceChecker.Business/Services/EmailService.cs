@@ -30,6 +30,7 @@ namespace PriceChecker.Business.Services
                     EnableSsl = true
                 };
 
+                log.LogInformation("Sending email");
                 smtpClient.Send(new MailMessage(options.ChrisEmailAddress, options.ChrisEmailAddress)
                 {
                     Subject = "Musashi Price",

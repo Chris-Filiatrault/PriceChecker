@@ -26,21 +26,20 @@ namespace PriceChecker.Business.Services
         public void CheckPrices(ILogger log)
         {
             var browniePrice = GetPriceFromElementId(ChocBrownieUrl, ChocBrownieElementId, log);
+            
+            log.LogInformation("Price is {BrowniePrice}", browniePrice);
+            entryService.AddNewEntry(new Entry
+            {
+                Price = browniePrice,
+                DateRecorded = DateTime.Today,
+                Product = ChocBrownieProductName,
+                Website = ChocBrownieUrl
+            });
 
             if (browniePrice >= 0 && browniePrice < 3)
             {
-                log.LogInformation("Price is less than $3");
                 emailService.SendEmail(browniePrice);
-                entryService.AddNewEntry(new Entry
-                {
-                    Price = browniePrice,
-                    DateRecorded = DateTime.Today,
-                    Product = ChocBrownieProductName,
-                    Website = ChocBrownieUrl
-                });
             }
-
-            log.LogInformation("Price was not less than $3. Did not send email.");
         }
 
         private decimal GetPriceFromElementId(string url, string elementId, ILogger log)
