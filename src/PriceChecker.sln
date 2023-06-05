@@ -21,6 +21,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SqlScripts", "SqlScripts", 
 		CreateEntries.sql = CreateEntries.sql
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pipeline", "Pipeline", "{6A17FEBB-25BF-42E3-9FF0-73BB1DECD034}"
+	ProjectSection(SolutionItems) = preProject
+		pipeline.yml = pipeline.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +54,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3B3800F1-B173-4B3D-B92B-52CB1688545C} = {32BA0854-1F8B-4723-A3E7-48FAD062BFC5}
+		{6A17FEBB-25BF-42E3-9FF0-73BB1DECD034} = {32BA0854-1F8B-4723-A3E7-48FAD062BFC5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C6E31383-A834-4255-A4C7-4879FBAFD5DC}
