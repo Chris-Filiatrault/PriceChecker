@@ -9,6 +9,7 @@ using PriceChecker.Business.Services.Interfaces;
 using PriceChecker.Data.Repositories;
 using PriceChecker.Data.Repositories.Interfaces;
 using PriceChecker.Business.Options;
+using Microsoft.Extensions.Logging;
 
 [assembly: FunctionsStartup(typeof(PriceChecker.API.Startup))]
 
@@ -31,16 +32,19 @@ namespace PriceChecker.API
             builder.Services.AddScoped<IEntryService>(serviceProvider =>
             {
                 var entryRepository = serviceProvider.GetRequiredService<IEntryRepository>();
-                return new EntryService(entryRepository);
+                var log = serviceProvider.GetRequiredService<ILogger<EntryService>>();
+                
+                return new EntryService(entryRepository, log);
             });
             builder.Services.AddScoped<IPriceService>(serviceProvider =>
             {
                 var client = serviceProvider.GetRequiredService<HtmlWeb>();
                 var emailService = serviceProvider.GetRequiredService<IEmailService>();
                 var entryService = serviceProvider.GetRequiredService<IEntryService>();
+                var log = serviceProvider.GetRequiredService<ILogger<PriceService>>();
 
                 var config = serviceProvider.GetService<IConfiguration>();
-                return new PriceService(client, emailService, entryService);
+                return new PriceService(client, emailService, entryService, log);
             });
 
             // DB Context

@@ -19,7 +19,7 @@ namespace PriceChecker.API.Functions
         {
             try
             {
-                priceService.CheckPrices(log);
+                priceService.CheckPrices();
             }
             catch (Exception exception)
             {
