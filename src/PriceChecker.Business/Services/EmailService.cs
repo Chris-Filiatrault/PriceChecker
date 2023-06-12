@@ -9,7 +9,7 @@ namespace PriceChecker.Business.Services
 {
     public class EmailService : IEmailService
     {
-        private readonly string smtpServer = "smtp-relay.sendinblue.com";
+        private const string smtpServer = "smtp-relay.sendinblue.com";
         private readonly SmtpOptions options;
         private readonly ILogger<EmailService> log;
 
