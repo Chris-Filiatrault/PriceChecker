@@ -1,24 +1,16 @@
-# .NET Core Function App to Windows on Azure
-# Build a .NET Core function app and deploy it to Azure as a Windows function App.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/en-us/azure/devops/pipelines/languages/dotnet-core
+# Builds a .NET Core function app and deploy it to Azure as a Windows function App.
 
 trigger:
 - master
 
 variables:
-  # Azure Resource Manager connection created during pipeline creation
-  azureSubscription: '232fe14c-b952-4716-9fc9-5c75edb28e2d'
-
-  # Function app name
-  functionAppName: 'api-price-checker'
-
-  # Agent VM image name
   vmImageName: 'windows-2019'
-
-  # Working Directory
+  functionAppName: 'price-checker-app'
+  azureSubscription: '232fe14c-b952-4716-9fc9-5c75edb28e2d'
   workingDirectory: '$(System.DefaultWorkingDirectory)/src/PriceCheckerAPI'
 
+
+# Build
 stages:
 - stage: Build
   displayName: Build stage
@@ -36,7 +28,9 @@ stages:
         command: 'build'
         projects: |
           $(workingDirectory)/*.csproj
-        arguments: --output $(System.DefaultWorkingDirectory)/publish_output --configuration Release
+        arguments: 
+          --output $(System.DefaultWorkingDirectory)/publish_output 
+          --configuration Release
 
     - task: ArchiveFiles@2
       displayName: 'Archive files'
@@ -50,6 +44,8 @@ stages:
     - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
       artifact: drop
 
+
+# Deploy
 - stage: Deploy
   displayName: Deploy stage
   dependsOn: Build
