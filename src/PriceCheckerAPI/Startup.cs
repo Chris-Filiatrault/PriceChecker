@@ -17,10 +17,7 @@ namespace PriceChecker.API
     {
         public override void Configure(IFunctionsHostBuilder builder)
         {
-            // Html Client
             builder.Services.AddScoped<HtmlWeb>();
-
-            // Services
             builder.Services.AddScoped<IEmailService, EmailService>();
             builder.Services.AddScoped<IPriceService>(serviceProvider =>
             {
@@ -32,7 +29,6 @@ namespace PriceChecker.API
                 return new PriceService(client, emailService, log);
             });
 
-            // Options
             builder.Services.AddOptions<SmtpOptions>()
                 .Configure<IConfiguration>((options, config) =>
                 {
