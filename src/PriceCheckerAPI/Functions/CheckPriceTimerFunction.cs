@@ -15,7 +15,7 @@ namespace PriceChecker.API.Functions
         }
 
         [FunctionName("CheckPricesTimerFunction")]
-        public void Run([TimerTrigger("0 * 22 * * *")] TimerInfo myTimer, ILogger log)
+        public void Run([TimerTrigger("0 0 22 * * *")] TimerInfo myTimer, ILogger log)
         {
             try
             {
