@@ -1,11 +1,13 @@
 ﻿using HtmlAgilityPack;
+
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+
+using PriceChecker.Business.Options;
 using PriceChecker.Business.Services;
 using PriceChecker.Business.Services.Interfaces;
-using PriceChecker.Business.Options;
-using Microsoft.Extensions.Logging;
 
 [assembly: FunctionsStartup(typeof(PriceChecker.API.Startup))]
 
@@ -13,8 +15,6 @@ namespace PriceChecker.API
 {
     public class Startup : FunctionsStartup
     {
-        private const string SqlConnectionString = "SqlConnectionString";
-
         public override void Configure(IFunctionsHostBuilder builder)
         {
             // Html Client
