@@ -10,35 +10,25 @@ namespace PriceChecker.Business.Services
     {
         private readonly HtmlWeb client;
         private readonly IEmailService emailService;
-        private readonly IEntryService entryService;
         private readonly ILogger<PriceService> log;
         internal const string ChocBrownieProductName = "Musashi Choc Brownie Protein Bar";
         internal const string ChocBrownieUrl = "https://www.chemistwarehouse.com.au/buy/76850/musashi-high-protein-bar-chocolate-brownie-90g";
         internal const string ChocBrownieElementId = "p_lt_ctl10_pageplaceholder_p_lt_ctl00_wBR_P_D1_ctl00_ctl00_ctl00_ctl00_ctl02_lblActualPrice";
 
 
-        public PriceService(HtmlWeb client, IEmailService emailService, IEntryService entryService, ILogger<PriceService> log)
+        public PriceService(HtmlWeb client, IEmailService emailService, ILogger<PriceService> log)
         {
             this.client = client;
             this.emailService = emailService;
-            this.entryService = entryService;
             this.log = log;
         }
 
         public void CheckPrices()
         {
             var browniePrice = GetPriceFromElementId(ChocBrownieUrl, ChocBrownieElementId);
-            
             log.LogInformation("Price is {BrowniePrice}", browniePrice);
-            entryService.AddNewEntry(new Entry
-            {
-                Price = browniePrice,
-                DateRecorded = DateTime.Today,
-                Product = ChocBrownieProductName,
-                Website = ChocBrownieUrl
-            });
 
-            if (browniePrice >= 0 && browniePrice < 3)
+            if (browniePrice > 0 && browniePrice < 3)
             {
                 emailService.SendEmail(browniePrice);
             }
