@@ -1,8 +1,6 @@
 ﻿using HtmlAgilityPack;
 using Microsoft.Extensions.Logging;
 using PriceChecker.Business.Services.Interfaces;
-using PriceChecker.Common.Models;
-using System;
 
 namespace PriceChecker.Business.Services
 {

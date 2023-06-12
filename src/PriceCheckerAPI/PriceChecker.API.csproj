@@ -11,7 +11,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PriceChecker.Business\PriceChecker.Business.csproj" />
-    <ProjectReference Include="..\PriceChecker.Common\PriceChecker.Common.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">
