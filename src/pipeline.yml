@@ -11,7 +11,7 @@ variables:
   azureSubscription: '232fe14c-b952-4716-9fc9-5c75edb28e2d'
 
   # Function app name
-  functionAppName: 'price-checker-app'
+  functionAppName: 'api-price-checker'
 
   # Agent VM image name
   vmImageName: 'windows-2019'
