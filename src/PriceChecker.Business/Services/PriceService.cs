@@ -37,21 +37,8 @@ namespace PriceChecker.Business.Services
         {
             try
             {
-                var httpClient = new HttpClient();
-                var result = await httpClient.GetAsync(url);
-                var content = result.Content;
-                log.LogInformation("Http client content", content);
-
-
                 log.LogInformation("Loading URL", url);
-                HtmlDocument html = client.Load(url);
-                log.LogInformation("HTML: {0}", html.Text);
-                
-                HtmlDocument html2 = client.Load(url);
-                log.LogInformation("HTML 2: {0}", html2.Text);
-                
-                HtmlDocument html3 = client.Load(url);
-                log.LogInformation("HTML 3: {0}", html3.Text);
+                var html = await client.LoadFromWebAsync(url);
 
                 var element = html.GetElementbyId(elementId);
                 log.LogInformation("Element: {0}", element);
